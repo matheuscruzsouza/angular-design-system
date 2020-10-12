@@ -1,0 +1,9 @@
+:host {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+:host .slide-wrapper {
+  width: 100vw;
+}

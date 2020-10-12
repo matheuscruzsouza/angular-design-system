@@ -1,0 +1,21 @@
+<section class="carousel-wrapper">
+  <ul class="carousel" #carousel>
+    <li *ngFor="let item of items;" class="carousel-item">
+      <div class="carousel-inner">
+        <ng-content></ng-content>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="controls" *ngIf="showControls">
+  <button lib small (click)="prev()">Previous</button>
+  <div
+    class="dot-wrapper"
+    *ngFor="let item of itemsElements;index as i"
+    (click)="setItem(item, i)"
+  >
+    <span class="dot" [ngClass]="{'active': i== currentSlide}"></span>
+  </div>
+  <button lib small (click)="next()">Next</button>
+</div>

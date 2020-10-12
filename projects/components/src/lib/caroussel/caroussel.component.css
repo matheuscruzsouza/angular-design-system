@@ -1,0 +1,54 @@
+:host .carousel-wrapper {
+  overflow: hidden;
+  max-width: 97vw;
+}
+
+:host ul {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50%;
+}
+
+:host li {
+  scroll-snap-align: center;
+}
+
+:host .carousel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50%;
+}
+
+:host .carousel-inner {
+  display: flex;
+  scroll-snap-align: start;
+}
+
+:host .controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 400px;
+  margin: auto;
+}
+
+:host .dot-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:host .dot {
+  height: 15px;
+  width: 15px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+:host .dot.active {
+  background-color: var(--primary-color);
+}

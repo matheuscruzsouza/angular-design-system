@@ -1,0 +1,72 @@
+<p>documentacao works!</p>
+
+<div lib container>
+  <div lib row>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+      <button lib small>
+        <span>Teste</span>
+        <mat-icon>checked</mat-icon>
+      </button>
+    </div>
+
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+      <button lib small>
+        <mat-icon>checked</mat-icon>
+        <span>Teste</span>
+      </button>
+    </div>
+
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+      <button lib small [disabled]="true" (click)="isDisabled()">
+        <span>Teste</span>
+        <mat-icon>checked</mat-icon>
+        <span>Teste</span>
+      </button>
+    </div>
+
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+      <button lib small secondary rounded>
+        <span>Teste</span>
+        <mat-icon>checked</mat-icon>
+      </button>
+    </div>
+
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+      <button lib small flat rounded>
+        <span>Teste</span>
+        <mat-icon>checked</mat-icon>
+      </button>
+    </div>
+
+    <div
+      lib
+      col-xs-12
+      col-sm-6
+      col-md-4
+      col-lg-2
+      col-lx-1
+      style="margin: auto;"
+    >
+      <button lib small rounded outline>
+        <span>Teste</span>
+        <mat-icon>checked</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div lib row style="margin: 0 -10px;">
+    <caroussel lib>
+      <slide
+        lib
+        background="https://www.w3schools.com/w3css/img_lights.jpg"
+        attachment="fixed"
+        height="100vh"
+      >
+        <img src="assets/images/png/shark-logo-cc0.png" alt="shark" />
+      </slide>
+      <slide lib>Teste 2</slide>
+      <slide lib>Teste 3</slide>
+      <slide lib>Teste 4</slide>
+    </caroussel>
+  </div>
+</div>
