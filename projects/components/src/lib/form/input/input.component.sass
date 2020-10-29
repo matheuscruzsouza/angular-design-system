@@ -1,0 +1,52 @@
+:host
+  .field
+    display: flex
+    flex-flow: column-reverse
+    label, input
+      transition: all 0.2s
+      touch-action: manipulation
+
+    input
+      &:focus
+        outline: 0
+      &:placeholder-shown + label
+        cursor: text
+        max-width: 66.66%
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        transform-origin: left bottom
+        transform: translate(0, 2.125rem) scale(1.5)
+      &:focus::-webkit-input-placeholder
+        opacity: 1
+      &:not(:placeholder-shown) + label,
+      &:focus + label
+        transform: translate(0, 0) scale(1)
+        cursor: pointer
+
+    label
+      padding-left: 5px
+      letter-spacing: 0.05em
+      font-family: 'Roboto'
+      color: var(--text-primary-lighter-color)
+
+
+  ::-webkit-input-placeholder
+    opacity: 0
+    transition: inherit
+
+  input[type="text"]
+    box-sizing: border-box
+    height: 41.6px
+    width: 100%
+    padding: 5px 10px
+    border-radius: 5px
+    border: 1px solid
+    font-size: 15px
+    font-family: 'Roboto'
+
+    color: var(--text-accent-color)
+    border-color: var(--accent-color)
+
+    &.error
+      border-color: var(--warn-color)

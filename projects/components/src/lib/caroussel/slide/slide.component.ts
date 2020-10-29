@@ -26,16 +26,16 @@ export class SlideComponent implements OnInit {
   height: string;
 
   @HostBinding("style.background-image")
-  protected bgImage: SafeStyle;
+  bgImage: SafeStyle;
 
   @HostBinding("style.background-attachment")
-  protected bgAttachment: SafeStyle;
+  bgAttachment: SafeStyle;
 
   @HostBinding("style.height")
-  protected slideHeight: string = this.height;
+  slideHeight: string = this.height;
 
   @HostBinding("style.width")
-  protected slideWidth: string = this.width;
+  slideWidth: string = this.width;
 
   constructor(private sanitizer: DomSanitizer) {}
 

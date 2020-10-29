@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-documentacao",
@@ -6,11 +7,26 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./documentacao.component.sass"],
 })
 export class DocumentacaoComponent implements OnInit {
-  constructor() {}
+  form = this.formBuilder.group({
+    teste: new FormControl("", {
+      validators: [Validators.required, Validators.minLength(3)],
+      updateOn: "blur",
+    }),
+  });
 
-  ngOnInit(): void {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe((value) => {
+      console.log(value);
+    });
+  }
 
   isDisabled() {
     alert("Sim");
+  }
+
+  submit() {
+    console.log(this.form.valid);
   }
 }

@@ -11,6 +11,8 @@ import { ButtonModule } from "projects/components/src/lib/button/button.module";
 import { MatIconModule } from "@angular/material/icon";
 import { CarousselModule } from "projects/components/src/lib/caroussel/caroussel.module";
 import { LibLayoutModule } from "projects/components/src/lib/layout/layout.module";
+import { LibFormModule } from "projects/components/src/lib/form/form.module";
+import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, DocumentacaoComponent],
@@ -21,9 +23,11 @@ import { LibLayoutModule } from "projects/components/src/lib/layout/layout.modul
     ButtonModule,
     CarousselModule,
     LibLayoutModule,
+    LibFormModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -47,10 +47,20 @@
       col-lx-1
       style="margin: auto;"
     >
-      <button lib small rounded outline>
+      <button lib small rounded outline (click)="submit()">
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
+    </div>
+
+    <div lib col-xs-12 col-sm-6>
+      <form [formGroup]="form">
+        <lib-input
+          placeholder="text"
+          label="Teste de input"
+          formControlName="teste"
+        ></lib-input>
+      </form>
     </div>
   </div>
 

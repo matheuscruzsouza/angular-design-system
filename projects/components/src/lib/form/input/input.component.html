@@ -1,0 +1,27 @@
+<div class="field">
+  <input
+    [id]="_id"
+    [type]="type"
+    [value]="value"
+    [placeholder]="placeholder"
+    (blur)="onBlur()"
+    (input)="onChanges($event)"
+    [disabled]="disabled"
+    [ngClass]="{'error': !control?.valid && !control?.pristine}"
+  />
+  <label
+    [for]="_id"
+    [ngClass]="{'error': !control?.valid && !control?.pristine}"
+    *ngIf="label"
+    >{{label}}</label
+  >
+</div>
+<div
+  [@visibilityChanged]="control?.valid || control?.pristine"
+  class="error input-type-any-error-label"
+  *ngIf="!disabled"
+>
+  <div *ngFor="let error of control?.errors | keyvalue">
+    <p>{{error.key}}</p>
+  </div>
+</div>
