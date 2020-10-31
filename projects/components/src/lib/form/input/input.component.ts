@@ -48,7 +48,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input()
   formControlName: string;
 
-  protected _id = "input-" + (Math.random() * 1000).toFixed(0);
+  _id = "input-" + (Math.random() * 1000).toFixed(0);
   protected _value = "";
 
   protected onChange: (_: any) => void = (_: any) => {};

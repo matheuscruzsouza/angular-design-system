@@ -13,6 +13,7 @@ import { CarousselModule } from "projects/components/src/lib/caroussel/caroussel
 import { LibLayoutModule } from "projects/components/src/lib/layout/layout.module";
 import { LibFormModule } from "projects/components/src/lib/form/form.module";
 import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
+import { WindowModule } from "projects/components/src/lib/window/window.module";
 
 @NgModule({
   declarations: [AppComponent, DocumentacaoComponent],
@@ -26,6 +27,7 @@ import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
     LibFormModule,
     MatIconModule,
     ReactiveFormsModule,
+    WindowModule,
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent],

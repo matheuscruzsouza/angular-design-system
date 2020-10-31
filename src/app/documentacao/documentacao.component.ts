@@ -14,6 +14,8 @@ export class DocumentacaoComponent implements OnInit {
     }),
   });
 
+  secondaryWindow = false;
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -28,5 +30,13 @@ export class DocumentacaoComponent implements OnInit {
 
   submit() {
     console.log(this.form.valid);
+  }
+
+  open() {
+    this.secondaryWindow = true;
+  }
+
+  close() {
+    this.secondaryWindow = false;
   }
 }

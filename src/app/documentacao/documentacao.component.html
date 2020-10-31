@@ -62,9 +62,17 @@
         ></lib-input>
       </form>
     </div>
+
+    <div lib col-xs-12 col-sm-12>
+      <button (click)="open()">open me!</button>
+      <window *ngIf="secondaryWindow">
+        <h2>Hello world from amother window!!</h2>
+        <button (click)="close()">Close me!</button>
+      </window>
+    </div>
   </div>
 
-  <div lib row style="margin: 0 -10px;">
+  <!-- <div lib row style="margin: 0 -10px;">
     <caroussel lib>
       <slide
         lib
@@ -78,5 +86,5 @@
       <slide lib>Teste 3</slide>
       <slide lib>Teste 4</slide>
     </caroussel>
-  </div>
+  </div> -->
 </div>
