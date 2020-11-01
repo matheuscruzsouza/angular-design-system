@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { WindowComponent } from 'projects/components/src/lib/window/window/window.component';
 
 @Component({
   selector: "app-documentacao",
@@ -14,6 +15,9 @@ export class DocumentacaoComponent implements OnInit {
     }),
   });
 
+  @ViewChild(WindowComponent) janela: WindowComponent;
+
+  valor = 0;
   secondaryWindow = false;
 
   constructor(private formBuilder: FormBuilder) {}
@@ -33,7 +37,18 @@ export class DocumentacaoComponent implements OnInit {
   }
 
   open() {
-    this.secondaryWindow = true;
+    if (this.janela) {
+      this.secondaryWindow = !this.secondaryWindow;
+
+      setTimeout(_ => {
+        this.secondaryWindow = true;
+        this.valor++;
+      }, 200)
+    } else {
+      this.secondaryWindow = true;
+      this.valor++;
+    }
+
   }
 
   close() {

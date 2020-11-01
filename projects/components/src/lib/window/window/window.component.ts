@@ -6,22 +6,27 @@ import {
   ApplicationRef,
   Injector,
   AfterViewInit,
-  ElementRef,
+  Input,
 } from "@angular/core";
-import { CdkPortal, DomPortalHost } from "@angular/cdk/portal";
+import { CdkPortal, DomPortalOutlet } from "@angular/cdk/portal";
 
 @Component({
   selector: "window",
   template: `
-    <div #teste *cdkPortal>
+    <ng-template cdkPortal>
       <ng-content></ng-content>
-    </div>
+    </ng-template>
   `,
 })
 export class WindowComponent implements AfterViewInit, OnDestroy {
-  @ViewChild("teste") portal: CdkPortal;
+  @Input() width: number = 600;
+  @Input() height: number = 600;
+  @Input() left: number = 200;
+  @Input() top: number = 200;
 
-  private externalWindow = null;
+  @ViewChild(CdkPortal) portal: CdkPortal;
+
+  externalWindow = null;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -30,16 +35,14 @@ export class WindowComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    console.log(this.portal);
-
     if (this.portal) {
       this.externalWindow = window.open(
         "",
         "",
-        "width=600,height=400,left=200,top=200"
+        `width=${this.width},height=${this.height},left=${this.left},top=${this.top},location=no,close=no,titlebar=no`
       );
 
-      const host = new DomPortalHost(
+      const host = new DomPortalOutlet(
         this.externalWindow.document.body,
         this.componentFactoryResolver,
         this.applicationRef,

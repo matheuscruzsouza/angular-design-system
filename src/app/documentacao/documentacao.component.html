@@ -65,26 +65,32 @@
 
     <div lib col-xs-12 col-sm-12>
       <button (click)="open()">open me!</button>
-      <window *ngIf="secondaryWindow">
-        <h2>Hello world from amother window!!</h2>
+
+      <window width="400" left="1300" top="0" *ngIf="secondaryWindow">
+        <h2>Hello world from another window!!</h2>
+        <p>Valor: {{ valor }}</p>
         <button (click)="close()">Close me!</button>
       </window>
     </div>
   </div>
 
-  <!-- <div lib row style="margin: 0 -10px;">
-    <caroussel lib>
-      <slide
-        lib
-        background="https://www.w3schools.com/w3css/img_lights.jpg"
-        attachment="fixed"
-        height="100vh"
-      >
-        <img src="assets/images/png/shark-logo-cc0.png" alt="shark" />
-      </slide>
-      <slide lib>Teste 2</slide>
-      <slide lib>Teste 3</slide>
-      <slide lib>Teste 4</slide>
-    </caroussel>
-  </div> -->
+  <div lib row>
+
+    <div lib col-lg-6 col-sm-6>
+        <caroussel lib>
+          <slide
+            lib
+            background="https://www.w3schools.com/w3css/img_lights.jpg"
+            attachment="fixed"
+            height="200px"
+          >
+            <img src="assets/images/png/shark-logo-cc0.png" alt="shark" />
+          </slide>
+          <slide lib>Teste 2</slide>
+          <slide lib>Teste 3</slide>
+          <slide lib>Teste 4</slide>
+        </caroussel>
+
+    </div>
+  </div>
 </div>
