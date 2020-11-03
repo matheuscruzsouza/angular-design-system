@@ -7,6 +7,7 @@ import {
   Injector,
   AfterViewInit,
   Input,
+  OnInit,
 } from "@angular/core";
 import { CdkPortal, DomPortalOutlet } from "@angular/cdk/portal";
 
@@ -18,11 +19,13 @@ import { CdkPortal, DomPortalOutlet } from "@angular/cdk/portal";
     </ng-template>
   `,
 })
-export class WindowComponent implements AfterViewInit, OnDestroy {
+export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() width: number = 600;
   @Input() height: number = 600;
   @Input() left: number = 200;
   @Input() top: number = 200;
+  @Input() stylesheet: string = "";
+  @Input() title: string = "New window";
 
   @ViewChild(CdkPortal) portal: CdkPortal;
 
@@ -34,13 +37,30 @@ export class WindowComponent implements AfterViewInit, OnDestroy {
     private injector: Injector
   ) {}
 
+  ngOnInit(): void {
+    var _this = this;
+
+    window.addEventListener("beforeunload", function () {
+      _this.ngOnDestroy();
+    });
+  }
+
   ngAfterViewInit(): void {
     if (this.portal) {
       this.externalWindow = window.open(
         "",
         "",
-        `width=${this.width},height=${this.height},left=${this.left},top=${this.top},location=no,close=no,titlebar=no`
+        `width=${this.width},height=${this.height},left=${this.left},top=${this.top}`
       );
+
+      const style = document.createElement("link");
+      style.href = window.location.origin + this.stylesheet;
+      style.rel = "stylesheet";
+      style.type = "text/css";
+
+      this.externalWindow.document.head.append(style);
+
+      this.externalWindow.document.title = this.title;
 
       const host = new DomPortalOutlet(
         this.externalWindow.document.body,
@@ -54,7 +74,7 @@ export class WindowComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.portal) {
+    if (this.externalWindow) {
       this.externalWindow.close();
     }
   }
