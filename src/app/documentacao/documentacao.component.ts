@@ -37,8 +37,14 @@ export class DocumentacaoComponent implements OnInit {
   }
 
   open() {
-    this.valor++;
-    this.secondaryWindow = true;
+    if (this.janela) {
+      this.secondaryWindow = false;
+    }
+
+    setTimeout((_) => {
+      this.valor++;
+      this.secondaryWindow = true;
+    }, 200);
   }
 
   close() {
