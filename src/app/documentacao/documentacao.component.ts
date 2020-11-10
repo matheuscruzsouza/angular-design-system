@@ -13,6 +13,10 @@ export class DocumentacaoComponent implements OnInit {
       validators: [Validators.required, Validators.minLength(3)],
       updateOn: "blur",
     }),
+    email: new FormControl("", {
+      validators: [Validators.required, Validators.email],
+      updateOn: "blur",
+    }),
   });
 
   @ViewChild(WindowComponent) janela: WindowComponent;

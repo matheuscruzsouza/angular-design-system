@@ -8,6 +8,8 @@ import {
   AfterViewInit,
   Input,
   OnInit,
+  OnChanges,
+  ViewContainerRef,
 } from "@angular/core";
 import { CdkPortal, DomPortalOutlet } from "@angular/cdk/portal";
 
@@ -19,19 +21,22 @@ import { CdkPortal, DomPortalOutlet } from "@angular/cdk/portal";
     </ng-template>
   `,
 })
-export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
+export class WindowComponent
+  implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input() width: number = 600;
   @Input() height: number = 600;
   @Input() left: number = 200;
   @Input() top: number = 200;
   @Input() stylesheet: string = "";
   @Input() title: string = "New window";
+  @Input() data: any;
 
   @ViewChild(CdkPortal) portal: CdkPortal;
 
   externalWindow = null;
 
   constructor(
+    private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
     private applicationRef: ApplicationRef,
     private injector: Injector
@@ -70,6 +75,51 @@ export class WindowComponent implements OnInit, AfterViewInit, OnDestroy {
       );
 
       host.attach(this.portal);
+
+      this.ngOnChanges();
+    }
+  }
+
+  ngOnChanges(): void {
+    if (this.portal) {
+      const _injector: any = this.viewContainerRef.parentInjector;
+      const _document = _injector._lView[0].ownerDocument;
+
+      console.log(_document);
+
+      _document.querySelectorAll("link, style").forEach((htmlElement) => {
+        let add = true;
+        Array.from(this.externalWindow.document.head.children).forEach(
+          (node: Element) => {
+            if (node.textContent == htmlElement.textContent) {
+              add = false;
+            }
+          }
+        );
+        if (add) {
+          this.externalWindow.document.head.appendChild(
+            htmlElement.cloneNode(true)
+          );
+        }
+      });
+
+      setTimeout((_) => {
+        _document.querySelectorAll("script").forEach((htmlElement) => {
+          let add = true;
+          Array.from(this.externalWindow.document.body.children).forEach(
+            (node: HTMLScriptElement) => {
+              if (node.src == htmlElement.src) {
+                add = false;
+              }
+            }
+          );
+          if (add) {
+            this.externalWindow.document.body.appendChild(
+              htmlElement.cloneNode(true)
+            );
+          }
+        });
+      }, 200);
     }
   }
 
