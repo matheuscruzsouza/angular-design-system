@@ -13,7 +13,8 @@
   <div class="select-menu options-wrapper">
     <cdk-virtual-scroll-viewport
       itemSize="32"
-      [style.height.px]="25 + visibleOptions * 90"
+      class="options-inner-wrapper"
+      [style.height.px]="50 + _visibleOptions * 50"
     >
       <input (input)="onFilter($event)" />
 

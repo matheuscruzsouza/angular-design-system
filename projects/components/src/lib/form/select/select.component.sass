@@ -2,7 +2,7 @@
   .toggler-wrapper
     .toggler
       width: fit-content
-      min-width: 125px
+      min-width: 250px
       padding: 15px 15px 15px 15px
       display: flex
       flex-direction: row
@@ -25,33 +25,44 @@
     position: relative
 
 ::ng-deep
-  .options
-    min-width: 211px
+  .options-inner-wrapper
     box-shadow: 0px 1px 2px 0px #0000002b
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
     border: 1px solid var(--primary-color)
 
-    &.active
-      display: block
+    input
+      height: 50px
+      width: 98.4%
+      border: none
+      border-bottom: 1px solid black
+      font-size: 15px
+      padding: 0 15px
+      box-sizing: border-box
 
-    .option
-      display: flex
-      flex-direction: row
-      justify-content: flex-start
-      padding: 15px 30px
-      position: relative
+    .options
+      min-width: 211px
 
-      &:hover
-        background-color: var(--accent-lighter-color)
+      &.active
+        display: block
 
-      &:last-of-type
-        border-bottom-left-radius: 5px
-        border-bottom-right-radius: 5px
+      .option
+        display: flex
+        flex-direction: row
+        justify-content: flex-start
+        padding: 15px 30px
+        position: relative
 
-      .mat-icon
-        position: absolute
-        left: 5px
+        &:hover
+          background-color: var(--accent-lighter-color)
+
+        &:last-of-type
+          border-bottom-left-radius: 5px
+          border-bottom-right-radius: 5px
+
+        .mat-icon
+          position: absolute
+          left: 5px
 
 ::ng-deep
     .backdrop-lib-select

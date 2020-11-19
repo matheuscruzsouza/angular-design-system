@@ -53,6 +53,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   _error: string;
   _isOpen: boolean;
+  _visibleOptions = this.visibleOptions;
 
   private onChange: (_: any) => void = (_: any) => {};
   private onTouched: () => void = () => {};
@@ -182,13 +183,17 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
       this.options = this.originalOptions.filter((option) =>
         option[this.labelKey].includes(event.data)
       );
-    } else {
-      this.options = this.originalOptions;
+
+      requestAnimationFrame(
+        () => (this._visibleOptions = this.options.length || 1)
+      );
     }
 
-    requestAnimationFrame(
-      () => (this.visibleOptions = this.options.length || 1)
-    );
+    if (!event.data) {
+      this.options = this.originalOptions;
+
+      requestAnimationFrame(() => (this._visibleOptions = this.visibleOptions));
+    }
   }
 
   search(value: string) {
