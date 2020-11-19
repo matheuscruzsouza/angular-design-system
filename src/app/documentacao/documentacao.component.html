@@ -45,6 +45,16 @@
       </button>
     </div>
 
+    <div lib col-xs-0 col-sm-6 col-md-4>
+      <form [formGroup]="form">
+        <lib-select [options]="options" formControlName="select">
+          <!-- <ng-template #optionTpl let-option>
+            Label {{ option.label }}
+          </ng-template> -->
+        </lib-select>
+      </form>
+    </div>
+
     <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small rounded outline (click)="open()">open me!</button>
 

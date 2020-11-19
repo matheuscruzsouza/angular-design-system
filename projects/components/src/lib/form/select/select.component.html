@@ -1,0 +1,36 @@
+<div class="toggler-wrapper">
+  <button
+    class="toggler"
+    (click)="open(dropdown, origin)"
+    #origin
+    [ngClass]="{'active': _isOpen}"
+  >
+    {{ label }}
+  </button>
+</div>
+
+<ng-template #dropdown>
+  <div class="select-menu options-wrapper">
+    <cdk-virtual-scroll-viewport itemSize="32" style="display: initial;">
+      <div *ngIf="!options.length">No results found...</div>
+
+      <div class="options" *ngIf="options.length">
+        <input (blur)="onBlur()" (input)="onChanges($event)" />
+        <div
+          class="option"
+          *cdkVirtualFor="let option of options"
+          [class.active]="isActive(option)"
+          (click)="select(option)"
+        >
+          <ng-container *ngIf="!optionTpl">{{option[labelKey]}}</ng-container>
+
+          <ng-container
+            *ngTemplateOutlet="optionTpl; context: {$implicit: option}"
+          >
+          </ng-container>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="backdrop-lib-select" (click)="close()"></div>
+</ng-template>
