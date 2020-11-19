@@ -11,11 +11,14 @@
 
 <ng-template #dropdown>
   <div class="select-menu options-wrapper">
-    <cdk-virtual-scroll-viewport itemSize="32" style="display: initial;">
-      <div *ngIf="!options.length">No results found...</div>
+    <cdk-virtual-scroll-viewport
+      itemSize="32"
+      [style.height.px]="25 + visibleOptions * 90"
+    >
+      <input (input)="onFilter($event)" />
 
+      <div *ngIf="!options.length">No results found...</div>
       <div class="options" *ngIf="options.length">
-        <input (blur)="onBlur()" (input)="onChanges($event)" />
         <div
           class="option"
           *cdkVirtualFor="let option of options"

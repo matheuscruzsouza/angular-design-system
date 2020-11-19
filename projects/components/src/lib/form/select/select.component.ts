@@ -51,15 +51,14 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @ContentChild(TemplateRef) optionTpl: TemplateRef<any>;
 
-  _id = "input-" + (Math.random() * 1000).toFixed(0);
   _error: string;
   _isOpen: boolean;
-  protected _value = "";
 
-  protected onChange: (_: any) => void = (_: any) => {};
-  protected onTouched: () => void = () => {};
+  private onChange: (_: any) => void = (_: any) => {};
+  private onTouched: () => void = () => {};
 
   private view;
+  private _value = "";
   private originalOptions: any[];
   private searchControl = new FormControl();
 
@@ -176,6 +175,20 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
       this._error = errors.join("\n");
     }
+  }
+
+  onFilter(event) {
+    if (event.data != null) {
+      this.options = this.originalOptions.filter((option) =>
+        option[this.labelKey].includes(event.data)
+      );
+    } else {
+      this.options = this.originalOptions;
+    }
+
+    requestAnimationFrame(
+      () => (this.visibleOptions = this.options.length || 1)
+    );
   }
 
   search(value: string) {
