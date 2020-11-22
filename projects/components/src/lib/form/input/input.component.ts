@@ -49,6 +49,7 @@ export class InputComponent implements ControlValueAccessor {
   formControlName: string;
 
   _id = "input-" + (Math.random() * 1000).toFixed(0);
+  _error: string;
   protected _value = "";
 
   protected onChange: (_: any) => void = (_: any) => {};
@@ -103,10 +104,44 @@ export class InputComponent implements ControlValueAccessor {
   onBlur() {
     this.onChange(this._value);
     this.onTouched();
+    this.onError();
   }
 
   onChanges(e) {
     this.value = e.target.value;
-    console.log(this.control);
+    this.onError();
+  }
+
+  onError() {
+    let errors = this.control.errors;
+
+    if (errors) {
+      errors = Object.entries(errors).map((error) => {
+        switch (error[0]) {
+          case "required":
+            return `${this.label || "Este campo"} é obrigatório!`;
+          case "pattern":
+            return `${
+              this.label || "Este campo"
+            } está com um padrão incorreto!`;
+          case "email":
+            return `${
+              this.label || "Este campo"
+            } está com um endereço de email invalido!`;
+          case "minlength":
+            return `${
+              this.label || "Este campo"
+            } está com o tamanho errado! Tamanho requerido: ${
+              error[1].requiredLength
+            }`;
+          case "areEqual":
+            return `${this.label || "Este campo"} deve ser igual!`;
+          default:
+            return `${this.label || "Este campo"}: ${error[0]}: ${error[1]}`;
+        }
+      });
+
+      this._error = errors.join("\n");
+    }
   }
 }

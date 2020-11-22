@@ -13,7 +13,6 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 @Directive({
   selector: "button[lib]",
   host: {
-    "[style.min-width]": "'44px'",
     "[style.min-height]": "'44px'",
     "[style.padding]": "'15px 30px'",
     "[style.font]": "'15px Roboto'",
@@ -23,6 +22,8 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
     "[style.flex-direction]": "'row'",
     "[style.justify-content]": "'space-between'",
     "[style.align-items]": "'center'",
+    "[style.white-space]": "'nowrap'",
+    "[style.min-width]": "'fit-content'",
   },
 })
 export class ButtonDirective implements OnInit {

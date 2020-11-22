@@ -2,21 +2,21 @@
 
 <div lib container>
   <div lib row>
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small>
         <mat-icon>checked</mat-icon>
         <span>Teste</span>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small [disabled]="true" (click)="isDisabled()">
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
@@ -24,78 +24,94 @@
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small secondary rounded>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-lx-1>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small flat rounded>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
-    <div
-      lib
-      col-xs-12
-      col-sm-6
-      col-md-4
-      col-lg-2
-      col-lx-1
-      style="margin: auto;"
-    >
+    <div lib col-xs-0 col-sm-6 col-md-4 style="margin: auto">
       <button lib small rounded outline (click)="submit()">
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6>
+    <div lib col-xs-0 col-sm-6 col-md-4>
       <form [formGroup]="form">
-        <lib-input
-          placeholder="example@example.com"
-          label="Email"
-          formControlName="teste"
-        ></lib-input>
+        <lib-select [options]="options" formControlName="select">
+          <!-- <ng-template #optionTpl let-option>
+            Label {{ option.label }}
+          </ng-template> -->
+        </lib-select>
       </form>
     </div>
 
-    <div lib col-xs-12 col-sm-12>
-      <button lib small flat (click)="open()">open me!</button>
+    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
+      <button lib small rounded outline (click)="open()">open me!</button>
 
-      <window width="400" left="650" top="0" *ngIf="secondaryWindow">
-        <h2>Hello world from another window!!</h2>
+      <window
+        width="400"
+        left="1300"
+        top="0"
+        stylesheet="/assets/css/externalWindow.scss"
+        *ngIf="secondaryWindow"
+      >
+        <h2>Teste de formulario!!</h2>
+
         <p>Valor: {{ valor }}</p>
 
-        <p>Hello Wallace</p>
+        <div lib container>
+          <div>
+            <div>
+              <form [formGroup]="form">
+                <lib-input
+                  placeholder="text"
+                  label="Teste de input"
+                  formControlName="teste"
+                ></lib-input>
+              </form>
+            </div>
 
-        <button (click)="logWallace()">Wallace</button>
+            <div>
+              <form [formGroup]="form">
+                <lib-input
+                  placeholder="example@example.com"
+                  label="Teste de email"
+                  formControlName="email"
+                ></lib-input>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div lib row>
+          <div lib col-lg-12 col-sm-12>
+            <caroussel lib>
+              <slide
+                lib
+                background="https://www.w3schools.com/w3css/img_lights.jpg"
+                attachment="fixed"
+                height="200px"
+              >
+              </slide>
+              <slide lib>{{ form.get("email").value }}</slide>
+              <slide lib>Teste 3</slide>
+              <slide lib>Teste 4</slide>
+            </caroussel>
+          </div>
+        </div>
 
         <button (click)="close()">Close me!</button>
       </window>
-    </div>
-  </div>
-
-  <div lib row>
-
-    <div lib col-lg-6 col-sm-6>
-        <caroussel lib>
-          <slide
-            lib
-            background="https://www.w3schools.com/w3css/img_lights.jpg"
-            attachment="fixed"
-            height="200px"
-          >
-            <img src="assets/images/png/shark-logo-cc0.png" alt="shark" />
-          </slide>
-          <slide lib>Teste 2</slide>
-          <slide lib>Teste 3</slide>
-          <slide lib>Teste 4</slide>
-        </caroussel>
-
     </div>
   </div>
 </div>
