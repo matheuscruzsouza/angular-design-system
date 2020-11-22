@@ -16,20 +16,21 @@
         overflow: hidden
         text-overflow: ellipsis
         transform-origin: left bottom
-        transform: translate(0, 2.125rem) scale(1.5)
+        transform: translate(0, 2.225rem) scale(1.5)
       &:focus::-webkit-input-placeholder
         opacity: 1
       &:not(:placeholder-shown) + label,
       &:focus + label
         transform: translate(0, 0) scale(1)
         cursor: pointer
+        font-size:  12px
 
     label
-      padding-left: 5px
+      padding-left: 10px
       letter-spacing: 0.05em
       font-family: 'Roboto'
       color: var(--text-primary-lighter-color)
-
+      font-size:  9px
 
   ::-webkit-input-placeholder
     opacity: 0

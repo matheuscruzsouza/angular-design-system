@@ -56,19 +56,24 @@
     <div lib col-xs-12 col-sm-6>
       <form [formGroup]="form">
         <lib-input
-          placeholder="text"
-          label="Teste de input"
+          placeholder="example@example.com"
+          label="Email"
           formControlName="teste"
         ></lib-input>
       </form>
     </div>
 
     <div lib col-xs-12 col-sm-12>
-      <button (click)="open()">open me!</button>
+      <button lib small flat (click)="open()">open me!</button>
 
-      <window width="400" left="1300" top="0" *ngIf="secondaryWindow">
+      <window width="400" left="650" top="0" *ngIf="secondaryWindow">
         <h2>Hello world from another window!!</h2>
         <p>Valor: {{ valor }}</p>
+
+        <p>Hello Wallace</p>
+
+        <button (click)="logWallace()">Wallace</button>
+
         <button (click)="close()">Close me!</button>
       </window>
     </div>

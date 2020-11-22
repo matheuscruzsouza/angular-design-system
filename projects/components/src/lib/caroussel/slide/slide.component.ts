@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  Directive,
   HostBinding,
   Input,
 } from "@angular/core";
@@ -20,10 +19,10 @@ export class SlideComponent implements OnInit {
   attachment: string;
 
   @Input()
-  width: string;
+  width: string = "100";
 
   @Input()
-  height: string;
+  height: string = "100";
 
   @HostBinding("style.background-image")
   bgImage: SafeStyle;

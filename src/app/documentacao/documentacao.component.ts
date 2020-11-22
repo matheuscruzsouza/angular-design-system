@@ -54,4 +54,9 @@ export class DocumentacaoComponent implements OnInit {
   close() {
     this.secondaryWindow = false;
   }
+
+  logWallace() {
+    console.log("Wallace");
+
+  }
 }
