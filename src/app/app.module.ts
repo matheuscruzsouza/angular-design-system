@@ -15,6 +15,8 @@ import { LibFormModule } from "projects/components/src/lib/form/form.module";
 import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
 import { WindowModule } from "projects/components/src/lib/window/window.module";
 
+import { NgxTextEditorModule } from "@matheuscruzsouza/ngx-text-editor";
+
 @NgModule({
   declarations: [AppComponent, DocumentacaoComponent],
   imports: [
@@ -28,6 +30,7 @@ import { WindowModule } from "projects/components/src/lib/window/window.module";
     MatIconModule,
     ReactiveFormsModule,
     WindowModule,
+    NgxTextEditorModule,
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent],

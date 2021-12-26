@@ -153,6 +153,8 @@ body {
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
+  --disabled-button: #7c7c7c60;
+  --text-disabled-color: #444444;
 }
 
 $mat-primary: (

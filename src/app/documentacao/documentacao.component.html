@@ -2,7 +2,7 @@
 
 <div lib container>
   <div lib row>
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
+    <div lib offset-xs-6 col-xs-6 offset-sm-0 col-sm-6 col-md-4 col-lg-2 col-xl-1>
       <button lib small>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
@@ -10,36 +10,36 @@
     </div>
 
     <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
-      <button lib small>
+      <button lib>
         <mat-icon>checked</mat-icon>
         <span>Teste</span>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
-      <button lib small [disabled]="true" (click)="isDisabled()">
+    <div lib col-xs-6 col-sm-6 col-md-4 col-lg-2 col-xl-1>
+      <button lib [disabled]="true" (click)="isDisabled()">
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
         <span>Teste</span>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
-      <button lib small secondary rounded>
+    <div lib col-xs-6 col-sm-6 col-md-4 col-lg-2 col-xl-1>
+      <button lib secondary rounded>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
-    <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
-      <button lib small flat rounded>
+    <div lib col-xs-6 col-sm-6 col-md-4 col-lg-2 col-xl-1>
+      <button lib flat rounded>
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
     </div>
 
     <div lib col-xs-0 col-sm-6 col-md-4 style="margin: auto">
-      <button lib small rounded outline (click)="submit()">
+      <button lib rounded outline (click)="submit()">
         <span>Teste</span>
         <mat-icon>checked</mat-icon>
       </button>
@@ -56,7 +56,7 @@
     </div>
 
     <div lib col-xs-12 col-sm-6 col-md-4 col-lg-2 col-xl-1>
-      <button lib small rounded outline (click)="open()">open me!</button>
+      <button lib rounded outline (click)="open()">open me!</button>
 
       <window
         width="400"
@@ -110,8 +110,14 @@
           </div>
         </div>
 
-        <button (click)="close()">Close me!</button>
+        <button lib (click)="close()">Close me!</button>
       </window>
+    </div>
+
+    <div lib col-xs-12>
+      <form [formGroup]="form">
+        <ngx-text-editor style="height: 500px;" formControlName="text"></ngx-text-editor>
+      </form>
     </div>
   </div>
 </div>

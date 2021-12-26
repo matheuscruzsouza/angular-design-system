@@ -13,9 +13,9 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 @Directive({
   selector: "button[lib]",
   host: {
-    "[style.min-height]": "'44px'",
-    "[style.padding]": "'15px 30px'",
-    "[style.font]": "'15px Roboto'",
+    "[style.min-height]": "'25px'",
+    "[style.padding]": "'10px 15px'",
+    "[style.font]": "'0.8rem Roboto'",
     "[style.font-weight]": "'500'",
     "[style.border]": "'1px solid'",
     "[style.display]": "'flex'",
@@ -40,6 +40,11 @@ export class ButtonDirective implements OnInit {
   hover: any = {
     color: "accent-color",
     text: "text-accent-color",
+  };
+
+  disabledColors: any = {
+    color: "disabled-button",
+    text: "text-disabled-color",
   };
 
   @HostBinding("class")
@@ -97,18 +102,30 @@ export class ButtonDirective implements OnInit {
   }
 
   setStyle() {
-    this.buttonColor = `var(--${this.color})`;
-    this.buttonText = `var(--${this.text})`;
-    this.buttonBorder = `var(--${this.border || this.color})`;
     this.buttonDisabled = this.element.nativeElement.disabled
       ? "not-allowed"
       : "pointer";
+    
+    if (this.element.nativeElement.disabled) {
+      this.setDisabledStyle();
+      return;
+    }
+
+    this.buttonColor = `var(--${this.color})`;
+    this.buttonText = `var(--${this.text})`;
+    this.buttonBorder = `var(--${this.border || this.color})`;
   }
 
   setHoverStyle() {
     this.buttonColor = `var(--${this.hover.color})`;
     this.buttonText = `var(--${this.hover.text})`;
     this.buttonBorder = `var(--${this.hover.border || this.hover.color})`;
+  }
+
+  setDisabledStyle() {
+    this.buttonColor = `var(--${this.disabledColors.color})`;
+    this.buttonText = `var(--${this.disabledColors.text})`;
+    this.buttonBorder = `var(--${this.disabledColors.border || this.disabledColors.color})`;
   }
 
   checkIcon() {
@@ -132,13 +149,13 @@ export class ButtonDirective implements OnInit {
 
     switch (position) {
       case "start":
-        style["marginLeft"] = "-10px";
+        style["marginLeft"] = "0px";
         style["marginRight"] = "20px";
         break;
 
       case "end":
         style["marginLeft"] = "20px";
-        style["marginRight"] = "-10px";
+        style["marginRight"] = "0px";
         break;
     }
 

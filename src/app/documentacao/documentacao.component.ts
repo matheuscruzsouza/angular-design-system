@@ -18,6 +18,7 @@ export class DocumentacaoComponent implements OnInit {
       updateOn: "blur",
     }),
     select: new FormControl(""),
+    text: new FormControl(""),
   });
 
   @ViewChild(WindowComponent) janela: WindowComponent;

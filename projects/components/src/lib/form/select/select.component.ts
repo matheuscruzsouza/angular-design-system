@@ -225,12 +225,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     this.view = this.vcr.createEmbeddedView(dropdownTpl);
     const dropdown = this.view.rootNodes[0];
 
-    console.log(this.optionTpl);
+    this._visibleOptions = 4;
 
     document.body.appendChild(dropdown);
     dropdown.style.width = `${origin.offsetWidth}px`;
-    dropdown.style.position = `relative`;
-    dropdown.style.left = `calc(${origin.offsetLeft}px - 10px)`;
+    dropdown.style.position = `absolute`;
+    dropdown.style.left = `calc(${origin.offsetLeft}px)`;
+    dropdown.style.top = `calc(${origin.offsetTop}px + ${origin.offsetHeight}px)`;
 
     this._isOpen = true;
   }
