@@ -19,6 +19,10 @@
       "components": [
         "dist/components/components",
         "dist/components"
+      ],
+      "ngx-image-editor": [
+        "dist/ngx-image-editor/ngx-image-editor",
+        "dist/ngx-image-editor"
       ]
     }
   },

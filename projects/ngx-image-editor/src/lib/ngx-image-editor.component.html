@@ -1,0 +1,24 @@
+<div class="image-editor-wrapper">
+  <div class="image-wrapper">
+    <img id="photo-preview"
+         src=''
+         alt="photo-preview"
+         draggable="false"
+         (mousedown)="onImageMouseDown($event)"
+         (mousemove)="onImageMouseMove($event)"
+         (mouseup)="onImageMouseUp($event)">
+
+    <div id="selection-tool" (mouseup)="onImageMouseUp($event)"></div>
+  </div>
+
+  <div class="menu-wrapper">
+    <button id="select-image" (click)="imageSelector.click()">
+      <input #imageSelector type="file" class="hide" accept="image/png, image/jpeg" (change)="onReadFile($event)">
+      Selecionar imagem
+    </button>
+
+    <button (click)="onCropImage()">Cortar imagem</button>
+
+    <button (click)="onSaveImage()">Salvar imagem</button>
+  </div>
+</div>

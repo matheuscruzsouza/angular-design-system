@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+:host .hide{
+  display: none;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+:host img[src=''] {
+  visibility: hidden;
+  height: 20px;
+}
+
+:host img[src='']::before {
+  content: "Nenhuma imagem selecionada";
+  visibility: initial;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+:host #photo-preview {
+  cursor: crosshair;
+  width: 50vh;
+  margin: auto;
+}
+
+:host #selection-tool {
+  position: fixed;
+  display: none;
+  border: 2px dashed rgb(0, 255, 0);
+  pointer-events: none;
+}
+
+:host .image-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  width: 100%;
+}

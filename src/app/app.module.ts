@@ -16,9 +16,11 @@ import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
 import { WindowModule } from "projects/components/src/lib/window/window.module";
 
 import { NgxTextEditorModule } from "@matheuscruzsouza/ngx-text-editor";
+import { ImageEditorComponent } from './image-editor/image-editor.component';
+import { NgxImageEditorModule } from "projects/ngx-image-editor/src/public-api";
 
 @NgModule({
-  declarations: [AppComponent, DocumentacaoComponent],
+  declarations: [AppComponent, DocumentacaoComponent, ImageEditorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +33,7 @@ import { NgxTextEditorModule } from "@matheuscruzsouza/ngx-text-editor";
     ReactiveFormsModule,
     WindowModule,
     NgxTextEditorModule,
+    NgxImageEditorModule
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent],
